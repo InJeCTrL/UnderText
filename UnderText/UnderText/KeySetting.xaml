@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="UnderText.KeySetting">
+    <NavigationPage.TitleView>
+        <StackLayout VerticalOptions="Center" Orientation="Horizontal" >
+            <ScrollView>
+            </ScrollView>
+            <Button BackgroundColor="LightSeaGreen" TextColor="White" Text="Copy Encrypted text" Clicked="Button_Clicked" HorizontalOptions="EndAndExpand" />
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <ScrollView x:Name="scrollView" Orientation="Vertical" VerticalScrollBarVisibility="Never">
+            <StackLayout>
+                <Label Text="Key:" />
+                <Editor x:Name="txt_key" AutoSize="TextChanges" IsReadOnly="True" />
+                <Label Text="Remark:" />
+                <Editor x:Name="txt_remark" AutoSize="TextChanges" />
+                <Button BackgroundColor="DodgerBlue" TextColor="White" Text="Save" Clicked="Button_Save" />
+                <Button BackgroundColor="OrangeRed" TextColor="White" Text="Delete Key" Clicked="Button_Delete" />
+                <Label Text="Received:" />
+                <Editor x:Name="txt_Received" AutoSize="TextChanges" />
+                <Label Text="Wanna Send:" />
+                <Editor x:Name="txt_Send" AutoSize="TextChanges" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

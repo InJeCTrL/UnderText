@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:UnderText"
+             mc:Ignorable="d"
+             x:Class="UnderText.MainPage">
+    <NavigationPage.TitleView>
+        <StackLayout VerticalOptions="Center" Orientation="Horizontal" >
+            <ScrollView>
+            </ScrollView>
+            <Label Text="UnderText" FontSize="16" TextColor="Black" VerticalTextAlignment="Center" />
+            <Button Text="Handshake(STEP 1)" BackgroundColor="Green" TextColor="White" CornerRadius="5" Clicked="Handshake_Clicked" HorizontalOptions="EndAndExpand" />
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Resources>
+        <local:KeyMask x:Key="mask"/>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView x:Name="scrollView" Orientation="Vertical" VerticalScrollBarVisibility="Never">
+            <StackLayout>
+                <ListView x:Name="list_key" ItemsSource="{Binding AESKeys}" HasUnevenRows="true" ItemTapped="list_key_ItemTapped">
+                    <ListView.Header>AES-Key List</ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="1"
+                                            Text="{Binding Remark}"
+                                            FontAttributes="Bold" />
+                                    <Label Grid.Row="1"
+                                            Grid.Column="1"
+                                            Text="{Binding Key, Converter={StaticResource mask}, Mode=OneWay}"
+                                            VerticalOptions="End" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
